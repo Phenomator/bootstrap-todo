@@ -54,6 +54,9 @@
               <i class="bi bi-search"></i>
             </button>
           </form>
+          <button class="btn btn-outline-light ms-2" id="darkModeToggle" aria-label="Toggle dark mode">
+            <i class="bi bi-moon-fill"></i>
+          </button>
         </div>
       </div>
     </nav>
@@ -134,101 +137,7 @@
       <h2 class="my-4">My Tasks</h2>
 
       <ul class="list-group" id="taskList">
-        <li
-          class="list-group-item d-flex justify-content-between align-items-start"
-        >
-          <div>
-            <div class="mb-1">
-              <span class="priority-dot bg-danger"></span>
-              <span class="fw-bold">Buy groceries</span>
-            </div>
-
-            <div class="small text-muted">
-              <span>
-                <i class="bi bi-calendar-event"></i> 31/03/2025, 6:00 PM
-              </span>
-              <span class="ms-2">
-                <i class="bi bi-arrow-repeat"></i> Daily
-              </span>
-            </div>
-          </div>
-          <div>
-            <button type="button" class="btn btn-outline-secondary btn-sm">
-              <i class="bi bi-flag-fill"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-warning btn-sm ms-2"
-              data-bs-toggle="modal"
-              data-bs-target="#editTaskModal"
-            >
-              <i class="bi bi-pencil-fill"></i>
-            </button>
-            <button type="button" class="btn btn-outline-danger btn-sm ms-2">
-              <i class="bi bi-trash-fill"></i>
-            </button>
-          </div>
-        </li>
-
-        <li
-          class="list-group-item d-flex justify-content-between align-items-start"
-        >
-          <div>
-            <div class="mb-1">
-              <span class="priority-dot bg-warning"></span>
-              <span class="fw-bold">Read lecture notes</span>
-            </div>
-          </div>
-          <div>
-            <button type="button" class="btn btn-outline-secondary btn-sm">
-              <i class="bi bi-flag-fill"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-warning btn-sm ms-2"
-              data-bs-toggle="modal"
-              data-bs-target="#editTaskModal"
-            >
-              <i class="bi bi-pencil-fill"></i>
-            </button>
-            <button type="button" class="btn btn-outline-danger btn-sm ms-2">
-              <i class="bi bi-trash-fill"></i>
-            </button>
-          </div>
-        </li>
-
-        <li
-          class="list-group-item d-flex justify-content-between align-items-start"
-        >
-          <div>
-            <div class="mb-1">
-              <span class="priority-dot bg-info"></span>
-              <span class="fw-bold">Take out the trash</span>
-            </div>
-
-            <div class="small text-muted">
-              <span>
-                <i class="bi bi-calendar-event"></i> 14/07/2025, 8:00 PM
-              </span>
-            </div>
-          </div>
-          <div>
-            <button type="button" class="btn btn-outline-secondary btn-sm">
-              <i class="bi bi-flag-fill"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-warning btn-sm ms-2"
-              data-bs-toggle="modal"
-              data-bs-target="#editTaskModal"
-            >
-              <i class="bi bi-pencil-fill"></i>
-            </button>
-            <button type="button" class="btn btn-outline-danger btn-sm ms-2">
-              <i class="bi bi-trash-fill"></i>
-            </button>
-          </div>
-        </li>
+        <!-- Tasks will be dynamically added here -->
       </ul>
     </main>
 
@@ -392,5 +301,6 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>
