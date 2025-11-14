@@ -114,72 +114,106 @@
       </div>
       <!-- TASK LISTS -->
       <h2 class="my-4">My Tasks</h2>
+
       <ul class="list-group" id="taskList">
         <li
-          class="list-group-item d-flex justify-content-between align-items-center"
+          class="list-group-item d-flex justify-content-between align-items-start"
         >
-          <div class="">
-            <span>Buy groceries</span
-            ><span class="badge bg-danger ms-2">High</span>
+          <div>
+            <div class="mb-1">
+              <span class="priority-dot bg-danger"></span>
+              <span class="fw-bold">Buy groceries</span>
+            </div>
+
+            <div class="small text-muted">
+              <span>
+                <i class="bi bi-calendar-event"></i> 31/03/2025, 6:00 PM
+              </span>
+              <span class="ms-2">
+                <i class="bi bi-arrow-repeat"></i> Daily
+              </span>
+            </div>
           </div>
           <div>
+            <button type="button" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-flag-fill"></i>
+            </button>
             <button
-              class="btn btn-outline-warning btn-sm"
               type="button"
+              class="btn btn-warning btn-sm ms-2"
               data-bs-toggle="modal"
               data-bs-target="#editTaskModal"
             >
-              <i><i class="bi bi-pencil-fill"></i></i>
+              <i class="bi bi-pencil-fill"></i>
             </button>
-            <button class="btn btn-outline-danger btn-sm ms-2" type="button">
+            <button type="button" class="btn btn-danger btn-sm ms-2">
               <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </li>
+
         <li
-          class="list-group-item d-flex justify-content-between align-items-center"
+          class="list-group-item d-flex justify-content-between align-items-start"
         >
-          <div class="">
-            <span>Read lecture notes</span
-            ><span class="badge bg-warning ms-2">Medium</span>
+          <div>
+            <div class="mb-1">
+              <span class="priority-dot bg-warning"></span>
+              <span class="fw-bold">Read lecture notes</span>
+            </div>
           </div>
           <div>
+            <button type="button" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-flag-fill"></i>
+            </button>
             <button
-              class="btn btn-outline-warning btn-sm"
               type="button"
+              class="btn btn-warning btn-sm ms-2"
               data-bs-toggle="modal"
               data-bs-target="#editTaskModal"
             >
-              <i><i class="bi bi-pencil-fill"></i></i>
+              <i class="bi bi-pencil-fill"></i>
             </button>
-            <button class="btn btn-outline-danger btn-sm ms-2" type="button">
+            <button type="button" class="btn btn-danger btn-sm ms-2">
               <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </li>
+
         <li
-          class="list-group-item d-flex justify-content-between align-items-center"
+          class="list-group-item d-flex justify-content-between align-items-start"
         >
-          <div class="">
-            <span>Take out the trash</span
-            ><span class="badge bg-info ms-2">Low</span>
+          <div>
+            <div class="mb-1">
+              <span class="priority-dot bg-info"></span>
+              <span class="fw-bold">Take out the trash</span>
+            </div>
+
+            <div class="small text-muted">
+              <span>
+                <i class="bi bi-calendar-event"></i> 14/07/2025, 8:00 PM
+              </span>
+            </div>
           </div>
           <div>
+            <button type="button" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-flag-fill"></i>
+            </button>
             <button
-              class="btn btn-outline-warning btn-sm"
               type="button"
+              class="btn btn-warning btn-sm ms-2"
               data-bs-toggle="modal"
               data-bs-target="#editTaskModal"
             >
-              <i><i class="bi bi-pencil-fill"></i></i>
+              <i class="bi bi-pencil-fill"></i>
             </button>
-            <button class="btn btn-outline-danger btn-sm ms-2" type="button">
+            <button type="button" class="btn btn-danger btn-sm ms-2">
               <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </li>
       </ul>
     </main>
+
     <!-- MODAL (edit task) -->
     <div
       class="modal fade"
@@ -206,20 +240,64 @@
             ></button>
           </div>
           <div class="modal-body">
-            <label for="editTaskInput" class="form-label">Task Name</label>
-            <input type="text" class="form-control" id="editTaskInput" />
-            <label for="editPrioritySelect">Priority</label>
-            <select
-              name="PrioritySelect"
-              id="editPrioritySelect"
-              class="form-select"
-            >
-              <option selected disabled>Select Priority</option>
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
-            </select>
+            <div class="mb-3">
+              <label for="editTaskInput" class="form-label">Task Name</label>
+              <input type="text" class="form-control" id="editTaskInput" />
+            </div>
+
+            <div class="mb-3">
+              <label for="editNotesTextarea" class="form-label">Notes</label>
+              <textarea
+                class="form-control"
+                id="editNotesTextarea"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="editPrioritySelect" class="form-label"
+                >Priority</label
+              >
+              <select class="form-select" id="editPrioritySelect">
+                <option selected disabled>Select priority...</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="editDateInput" class="form-label">Date</label>
+              <input type="date" class="form-control" id="editDateInput" />
+            </div>
+
+            <div class="mb-3">
+              <label for="editTimeInput" class="form-label">Time</label>
+              <input type="time" class="form-control" id="editTimeInput" />
+            </div>
+
+            <div class="mb-3">
+              <label for="editRepeatSelect" class="form-label">Repeat</label>
+              <select class="form-select" id="editRepeatSelect">
+                <option value="none" selected>Don't repeat</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+              </select>
+            </div>
+
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="editAlertToggle"
+              />
+              <label class="form-check-label" for="editAlertToggle"
+                >Alert me</label
+              >
+            </div>
           </div>
+
           <div class="modal-footer">
             <button
               type="button"
@@ -237,8 +315,6 @@
     </div>
     <!-- MODAL (dashboard stats) -->
 
-    <!-- Modal Body -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     <div
       class="modal fade"
       id="statsModal"
