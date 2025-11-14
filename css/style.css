@@ -61,3 +61,8 @@
     outline: none;
     border: none;
 }
+.card[data-bs-toggle="modal"]:hover {
+    cursor: pointer;
+    background-color: #eaeced;
+
+}

@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <!-- NAV -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container">
         <a href="#" class="navbar-brand">To-Do List Manager</a>
         <button
@@ -40,40 +40,62 @@
     </nav>
     <!-- MAIN -->
     <main class="container mt-4">
+      <!-- dashboard -->
       <div class="row mb-4">
         <div class="col-6 col-md-3 mb-3">
-          <div class="card">
+          <div
+            class="card"
+            data-bs-toggle="modal"
+            data-bs-target="#statsModal"
+            data-bs-title="Today's tasks"
+          >
             <div class="card-body">
-              <h5 class="card-title">today</h5>
+              <h5 class="card-title">Today</h5>
               <h2 class="card-text">4</h2>
             </div>
           </div>
         </div>
         <div class="col-6 col-md-3 mb-3">
-          <div class="card">
+          <div
+            class="card"
+            data-bs-toggle="modal"
+            data-bs-target="#statsModal"
+            data-bs-title="Scheduled Tasks"
+          >
             <div class="card-body">
-              <h5 class="card-title">today</h5>
+              <h5 class="card-title">Scheduled</h5>
               <h2 class="card-text">4</h2>
             </div>
           </div>
         </div>
         <div class="col-6 col-md-3 mb-3">
-          <div class="card">
+          <div
+            class="card"
+            data-bs-toggle="modal"
+            data-bs-target="#statsModal"
+            data-bs-title="Completed Tasks"
+          >
             <div class="card-body">
-              <h5 class="card-title">today</h5>
-              <h2 class="card-text">4</h2>
+              <h5 class="card-title">Completed</h5>
+              <h2 class="card-text">5</h2>
             </div>
           </div>
         </div>
         <div class="col-6 col-md-3 mb-3">
-          <div class="card">
+          <div
+            class="card"
+            data-bs-toggle="modal"
+            data-bs-target="#statsModal"
+            data-bs-title="Flagged tasks"
+          >
             <div class="card-body">
-              <h5 class="card-title">today</h5>
-              <h2 class="card-text">4</h2>
+              <h5 class="card-title">Flagged</h5>
+              <h2 class="card-text">1</h2>
             </div>
           </div>
         </div>
       </div>
+      <!-- form -->
       <h1 class="my-4" id="FormHeading">Add a New Task</h1>
 
       <div class="input-group mb-3">
@@ -169,7 +191,7 @@
       aria-hidden="true"
     >
       <div
-        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
         role="document"
       >
         <div class="modal-content">
@@ -212,6 +234,66 @@
         </div>
       </div>
     </div>
+    <!-- MODAL (dashboard stats) -->
+
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div
+      class="modal fade"
+      id="statsModal"
+      tabindex="-1"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      role="dialog"
+      aria-labelledby="showStatsDetails"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="showStatsDetails">Details</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="py-4 mt-auto">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="mb-0">
+              Built by Phenomator |
+              <a
+                href="https://github.com/phenomator"
+                class="text-decoration-none"
+                target="_blank"
+                >Github</a
+              >
+            </p>
+            <p>&copy;2025</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
