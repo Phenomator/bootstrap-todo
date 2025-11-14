@@ -37,22 +37,38 @@ function renderTasks() {
   tasks.forEach((task, index) => {
     const li = document.createElement('li');
     li.className = 'list-group-item d-flex justify-content-between align-items-start';
+    li.dataset.index = index;
     if (task.completed) {
       li.style.opacity = '0.6';
     }
     
-    li.innerHTML = `
-      <div class="d-flex align-items-center flex-grow-1">
-        <input type="checkbox" class="form-check-input me-3" ${task.completed ? 'checked' : ''} onchange="toggleTask(${index})">
-        <span class="${task.completed ? 'text-decoration-line-through' : ''}">${task.text}</span>
-      </div>
-      <div>
-        <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteTask(${index})">
-          <i class="bi bi-trash-fill"></i>
-        </button>
-      </div>
-    `;
+    const container = document.createElement('div');
+    container.className = 'd-flex align-items-center flex-grow-1';
     
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'form-check-input me-3';
+    checkbox.checked = task.completed;
+    
+    const span = document.createElement('span');
+    span.textContent = task.text;
+    if (task.completed) {
+      span.className = 'text-decoration-line-through';
+    }
+    
+    container.appendChild(checkbox);
+    container.appendChild(span);
+    
+    const buttonDiv = document.createElement('div');
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.className = 'btn btn-outline-danger btn-sm';
+    deleteBtn.innerHTML = '<i class="bi bi-trash-fill"></i>';
+    
+    buttonDiv.appendChild(deleteBtn);
+    
+    li.appendChild(container);
+    li.appendChild(buttonDiv);
     taskList.appendChild(li);
   });
   
@@ -87,6 +103,24 @@ addTaskBtn.addEventListener('click', addTask);
 newTaskInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     addTask();
+  }
+});
+
+// Event delegation for task list
+taskList.addEventListener('change', (e) => {
+  if (e.target.type === 'checkbox') {
+    const li = e.target.closest('li');
+    const index = parseInt(li.dataset.index);
+    toggleTask(index);
+  }
+});
+
+taskList.addEventListener('click', (e) => {
+  const deleteBtn = e.target.closest('.btn-outline-danger');
+  if (deleteBtn) {
+    const li = deleteBtn.closest('li');
+    const index = parseInt(li.dataset.index);
+    deleteTask(index);
   }
 });
 
