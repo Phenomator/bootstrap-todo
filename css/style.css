@@ -63,9 +63,18 @@
 }
 .card[data-bs-toggle="modal"]:hover {
     cursor: pointer;
-    background-color: #eaeced;
+    background-color: #e8f0fe;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
 
+[data-bs-theme="dark"] .card[data-bs-toggle="modal"]:hover {
+    background-color: #1a1a2e;
+    box-shadow: 0 0 20px var(--glow-color), 0 8px 16px rgba(0, 0, 0, 0.3);
+}
 
+[data-bs-theme="dark"] .card {
+    box-shadow: 0 0 10px rgba(88, 155, 255, 0.2);
 }
 .priority-dot {
     
@@ -91,23 +100,178 @@
     --bs-border-color: #dee2e6;
 
     
-    --bs-card-bg: #ffffff; 
+    --bs-card-bg: #ffffff;
+    --glow-color: rgba(13, 110, 250, 0.3);
 }
 
+/* Auto-detect user preference for dark mode */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-bs-theme="light"]) {
+        --bs-primary: #589bff;
+        --bs-primary-rgb: 88, 155, 255;
+
+        --bs-body-bg: #0a0a0a;
+        --bs-body-color: #e9ecef; 
+        --bs-border-color: #2a2a2a;
+
+        --bs-card-bg: #141414;
+        --glow-color: rgba(88, 155, 255, 0.4);
+    }
+}
 
 [data-bs-theme="dark"] {
     
     --bs-primary: #589bff;
     --bs-primary-rgb: 88, 155, 255;
 
-    --bs-body-bg: #1a1a1a; 
+    --bs-body-bg: #0a0a0a; 
     --bs-body-color: #e9ecef; 
-    --bs-border-color: #495057;
+    --bs-border-color: #2a2a2a;
 
-    --bs-card-bg: #2a2a2a; 
+    --bs-card-bg: #141414;
+    --glow-color: rgba(88, 155, 255, 0.4);
 }
 
 
 .card {
     background-color: var(--bs-card-bg);
+    transition: all 0.3s ease;
+    border: 1px solid var(--bs-border-color);
+}
+
+/* Dashboard card animations and effects */
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: slideUpFadeIn 0.5s ease-out;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Hover magnification effect for inputs and buttons */
+.form-control,
+.form-select,
+.btn {
+    transition: all 0.3s ease;
+}
+
+.form-control:hover,
+.form-control:focus,
+.form-select:hover,
+.form-select:focus {
+    transform: scale(1.02);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Glow effects for inputs and buttons in dark mode */
+[data-bs-theme="dark"] .form-control:focus {
+    box-shadow: 0 0 15px var(--glow-color);
+    border-color: var(--bs-primary);
+}
+
+[data-bs-theme="dark"] .btn-outline-primary:hover {
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+[data-bs-theme="dark"] .btn-primary {
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+[data-bs-theme="dark"] .btn-primary:hover {
+    box-shadow: 0 0 20px var(--glow-color);
+}
+
+/* Modal animations */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal.show .modal-dialog {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    border: 1px solid var(--bs-border-color);
+}
+
+[data-bs-theme="dark"] .modal-content {
+    background-color: var(--bs-card-bg);
+    box-shadow: 0 0 30px var(--glow-color);
+}
+
+/* Navbar improvements */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="dark"] .navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .form-control {
+        font-size: 0.9rem;
+    }
+}
+
+/* Body background for dark mode */
+[data-bs-theme="dark"] body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+/* Search input styling */
+.navbar .form-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--bs-border-color);
+}
+
+[data-bs-theme="dark"] .navbar .form-control {
+    background-color: rgba(20, 20, 20, 0.9);
+    color: var(--bs-body-color);
+    border-color: var(--bs-border-color);
+}
+
+[data-bs-theme="dark"] .navbar .form-control::placeholder {
+    color: rgba(233, 236, 239, 0.5);
+}
+
+/* Fix navbar alignment */
+.navbar-collapse {
+    align-items: center;
+}
+
+.navbar .d-flex {
+    align-items: center;
 }

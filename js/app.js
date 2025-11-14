@@ -2,46 +2,66 @@
 const darkModeToggle = document.getElementById('darkModeToggle');
 const htmlElement = document.documentElement;
 
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
+// Check for saved theme preference, user's OS preference, or default to light mode
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+// Apply initial theme
 if (currentTheme === 'dark') {
   htmlElement.setAttribute('data-bs-theme', 'dark');
-  darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+  if (darkModeToggle) {
+    darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+  }
+} else {
+  htmlElement.setAttribute('data-bs-theme', 'light');
+  if (darkModeToggle) {
+    darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
+  }
 }
 
 // Toggle dark mode
-darkModeToggle.addEventListener('click', () => {
-  const theme = htmlElement.getAttribute('data-bs-theme');
-  if (theme === 'dark') {
-    htmlElement.setAttribute('data-bs-theme', 'light');
-    darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
-    localStorage.setItem('theme', 'light');
-  } else {
-    htmlElement.setAttribute('data-bs-theme', 'dark');
-    darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
-    localStorage.setItem('theme', 'dark');
-  }
-});
+if (darkModeToggle) {
+  darkModeToggle.addEventListener('click', () => {
+    const theme = htmlElement.getAttribute('data-bs-theme');
+    if (theme === 'dark') {
+      htmlElement.setAttribute('data-bs-theme', 'light');
+      darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
+      localStorage.setItem('theme', 'light');
+    } else {
+      htmlElement.setAttribute('data-bs-theme', 'dark');
+      darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+}
 
 // To-Do List Functionality
 const taskList = document.getElementById('taskList');
 const newTaskInput = document.getElementById('newTaskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 
-// Load tasks from localStorage
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+// Only initialize task functionality if elements exist
+if (taskList && newTaskInput && addTaskBtn) {
+  // Load tasks from localStorage
+  let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-// Update dashboard counts
-function updateDashboard() {
-  const totalTasks = tasks.length;
-  const completedTasks = tasks.filter(task => task.completed).length;
-  const activeTasks = totalTasks - completedTasks;
-  
-  document.getElementById('todayCount').textContent = activeTasks;
-  document.getElementById('scheduledCount').textContent = activeTasks;
-  document.getElementById('completedCount').textContent = completedTasks;
-  document.getElementById('flaggedCount').textContent = 0; // Placeholder for future functionality
-}
+  // Update dashboard counts
+  function updateDashboard() {
+    const totalTasks = tasks.length;
+    const completedTasks = tasks.filter(task => task.completed).length;
+    const activeTasks = totalTasks - completedTasks;
+    
+    const todayCount = document.getElementById('todayCount');
+    const scheduledCount = document.getElementById('scheduledCount');
+    const completedCount = document.getElementById('completedCount');
+    const flaggedCount = document.getElementById('flaggedCount');
+    
+    if (todayCount) todayCount.textContent = activeTasks;
+    if (scheduledCount) scheduledCount.textContent = activeTasks;
+    if (completedCount) completedCount.textContent = completedTasks;
+    if (flaggedCount) flaggedCount.textContent = 0; // Placeholder for future functionality
+  }
 
 // Render tasks
 function renderTasks() {
@@ -141,3 +161,43 @@ taskList.addEventListener('click', (e) => {
 
 // Initial render
 renderTasks();
+
+// Search functionality
+const searchForm = document.querySelector('form[role="search"]');
+const searchInput = document.querySelector('input[type="search"]');
+
+if (searchForm && searchInput) {
+  // Prevent form submission
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+  });
+
+  // Real-time search as user types
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase().trim();
+    filterTasks(searchTerm);
+  });
+}
+
+// Filter tasks based on search term
+function filterTasks(searchTerm) {
+  const taskItems = taskList.querySelectorAll('li');
+  
+  taskItems.forEach((item) => {
+    const taskText = item.querySelector('span').textContent.toLowerCase();
+    
+    if (taskText.includes(searchTerm)) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+  
+  // If search is empty, show all tasks
+  if (searchTerm === '') {
+    taskItems.forEach((item) => {
+      item.style.display = '';
+    });
+  }
+}
+}
