@@ -6,6 +6,7 @@
     <title>My To-Do List</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- NAV -->
@@ -31,8 +32,8 @@
               placeholder="search"
               aria-label="search"
             />
-            <button class="btn btn-outline-success" type="submit">
-              search
+            <button class="btn btn-outline-primary" type="submit">
+              <i class="bi bi-search"></i>
             </button>
           </form>
         </div>
@@ -107,8 +108,8 @@
           aria-describedby="FormHeading"
           id="newTaskInput"
         />
-        <button class="btn btn-outline-secondary" type="button" id="">
-          Add
+        <button class="btn btn-outline-primary" type="button" id="addTaskBtn">
+          <i class="bi bi-plus-lg"></i>
         </button>
       </div>
       <!-- TASK LISTS -->
@@ -123,15 +124,15 @@
           </div>
           <div>
             <button
-              class="btn btn-warning btn-sm"
+              class="btn btn-outline-warning btn-sm"
               type="button"
               data-bs-toggle="modal"
               data-bs-target="#editTaskModal"
             >
-              Edit
+              <i><i class="bi bi-pencil-fill"></i></i>
             </button>
-            <button class="btn btn-danger btn-sm ms-2" type="button">
-              Delete
+            <button class="btn btn-outline-danger btn-sm ms-2" type="button">
+              <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </li>
@@ -144,15 +145,15 @@
           </div>
           <div>
             <button
-              class="btn btn-warning btn-sm"
+              class="btn btn-outline-warning btn-sm"
               type="button"
               data-bs-toggle="modal"
               data-bs-target="#editTaskModal"
             >
-              Edit
+              <i><i class="bi bi-pencil-fill"></i></i>
             </button>
-            <button class="btn btn-danger btn-sm ms-2" type="button">
-              Delete
+            <button class="btn btn-outline-danger btn-sm ms-2" type="button">
+              <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </li>
@@ -165,15 +166,15 @@
           </div>
           <div>
             <button
-              class="btn btn-warning btn-sm"
+              class="btn btn-outline-warning btn-sm"
               type="button"
               data-bs-toggle="modal"
               data-bs-target="#editTaskModal"
             >
-              Edit
+              <i><i class="bi bi-pencil-fill"></i></i>
             </button>
-            <button class="btn btn-danger btn-sm ms-2" type="button">
-              Delete
+            <button class="btn btn-outline-danger btn-sm ms-2" type="button">
+              <i class="bi bi-trash-fill"></i>
             </button>
           </div>
         </li>
