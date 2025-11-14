@@ -31,6 +31,18 @@ const addTaskBtn = document.getElementById('addTaskBtn');
 // Load tasks from localStorage
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
+// Update dashboard counts
+function updateDashboard() {
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter(task => task.completed).length;
+  const activeTasks = totalTasks - completedTasks;
+  
+  document.getElementById('todayCount').textContent = activeTasks;
+  document.getElementById('scheduledCount').textContent = activeTasks;
+  document.getElementById('completedCount').textContent = completedTasks;
+  document.getElementById('flaggedCount').textContent = 0; // Placeholder for future functionality
+}
+
 // Render tasks
 function renderTasks() {
   taskList.innerHTML = '';
@@ -74,6 +86,9 @@ function renderTasks() {
   
   // Save tasks to localStorage
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  
+  // Update dashboard
+  updateDashboard();
 }
 
 // Add new task
