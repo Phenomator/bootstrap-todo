@@ -1,0 +1,63 @@
+/* hamburger animation */
+.navbar-toggler-icon {
+    background-image: none;
+}
+
+
+.navbar-toggler-icon {
+    position: relative;
+    height: 2px;
+    width: 1.5em;
+    background-color: white; 
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.navbar-toggler-icon::before {
+    content: '';
+    position: absolute;
+    top: -0.5em; 
+    left: 0;
+    width: 1.5em;
+    height: 2px;
+    background-color: white;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+
+.navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    top: 0.5em; 
+    left: 0;
+    width: 1.5em;
+    height: 2px;
+    background-color: white;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+
+
+
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    transform: rotate(45deg);
+}
+
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    top: 0;
+    transform: rotate(0deg);
+}
+
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+.navbar-toggler:focus, .navbar-toggler:active,.navbar-toggler {
+    box-shadow: none;
+    outline: none;
+    border: none;
+}

@@ -5,14 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My To-Do List</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <main class="container mt-4">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-3">
-        <div class="container-fluid">
-          <a href="#" class="navbar-brand">To-Do List Manager</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a href="#" class="navbar-brand">To-Do List Manager</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle Navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <form class="d-flex ms-lg-auto mt-2 mt-lg-0" role="search">
+            <input
+              type="search"
+              class="form-control me-2"
+              placeholder="search"
+              aria-label="search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              search
+            </button>
+          </form>
         </div>
-      </nav>
+      </div>
+    </nav>
+    <main class="container mt-4">
       <h1 class="my-4" id="FormHeading">Add a New Task</h1>
 
       <div class="input-group mb-3">
@@ -28,7 +53,109 @@
           Add
         </button>
       </div>
+      <h2 class="my-4">My Tasks</h2>
+      <ul class="list-group" id="taskList">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <span>Buy groceries</span>
+          <div>
+            <button
+              class="btn btn-warning btn-sm"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#editTaskModal"
+            >
+              Edit
+            </button>
+            <button class="btn btn-danger btn-sm ms-2" type="button">
+              Delete
+            </button>
+          </div>
+        </li>
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <span>Read lecture notes</span>
+          <div>
+            <button
+              class="btn btn-warning btn-sm"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#editTaskModal"
+            >
+              Edit
+            </button>
+            <button class="btn btn-danger btn-sm ms-2" type="button">
+              Delete
+            </button>
+          </div>
+        </li>
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <span>Take out the trash</span>
+          <div>
+            <button
+              class="btn btn-warning btn-sm"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#editTaskModal"
+            >
+              Edit
+            </button>
+            <button class="btn btn-danger btn-sm ms-2" type="button">
+              Delete
+            </button>
+          </div>
+        </li>
+      </ul>
     </main>
+
+    <div
+      class="modal fade"
+      id="editTaskModal"
+      tabindex="-1"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      role="dialog"
+      aria-labelledby="editTaskInput"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editTaskInput">Edit Task</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label for="" class="form-label">Task Name</label>
+            <input type="text" class="form-control" id="editTaskInput" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-outline-primary">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
