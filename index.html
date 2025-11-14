@@ -53,12 +53,16 @@
           Add
         </button>
       </div>
+      <!-- TASK LISTS -->
       <h2 class="my-4">My Tasks</h2>
       <ul class="list-group" id="taskList">
         <li
           class="list-group-item d-flex justify-content-between align-items-center"
         >
-          <span>Buy groceries</span>
+          <div class="">
+            <span>Buy groceries</span
+            ><span class="badge bg-danger ms-2">High</span>
+          </div>
           <div>
             <button
               class="btn btn-warning btn-sm"
@@ -76,7 +80,10 @@
         <li
           class="list-group-item d-flex justify-content-between align-items-center"
         >
-          <span>Read lecture notes</span>
+          <div class="">
+            <span>Read lecture notes</span
+            ><span class="badge bg-warning ms-2">Medium</span>
+          </div>
           <div>
             <button
               class="btn btn-warning btn-sm"
@@ -94,7 +101,10 @@
         <li
           class="list-group-item d-flex justify-content-between align-items-center"
         >
-          <span>Take out the trash</span>
+          <div class="">
+            <span>Take out the trash</span
+            ><span class="badge bg-info ms-2">Low</span>
+          </div>
           <div>
             <button
               class="btn btn-warning btn-sm"
@@ -111,7 +121,7 @@
         </li>
       </ul>
     </main>
-
+    <!-- MODAL (edit task) -->
     <div
       class="modal fade"
       id="editTaskModal"
@@ -137,8 +147,19 @@
             ></button>
           </div>
           <div class="modal-body">
-            <label for="" class="form-label">Task Name</label>
+            <label for="editTaskInput" class="form-label">Task Name</label>
             <input type="text" class="form-control" id="editTaskInput" />
+            <label for="editPrioritySelect">Priority</label>
+            <select
+              name="PrioritySelect"
+              id="editPrioritySelect"
+              class="form-select"
+            >
+              <option selected disabled>Select Priority</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
           </div>
           <div class="modal-footer">
             <button
