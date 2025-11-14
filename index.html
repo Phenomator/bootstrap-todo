@@ -11,8 +11,15 @@
   <body class="d-flex flex-column min-vh-100">
     <!-- NAV -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <i class="bi bi-house"></i>
       <div class="container">
-        <a href="#" class="navbar-brand">To-Do List Manager</a>
+        <a class="navbar-brand" href="home.html" aria-label="Home">
+          <i class="bi bi-house-fill fs-5"></i>
+          <span class="ms-2">
+            <i class="bi bi-check2-square"></i> To-Do List Manager</span
+          >
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -343,7 +350,7 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-outline-danger"
               data-bs-dismiss="modal"
             >
               Close
